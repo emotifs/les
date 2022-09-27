@@ -14,24 +14,13 @@
         </router-link>
     </div>
   </div>
-  <div class="mx-auto px-8" v-if="totalPages !==1">
+  <div class="mx-auto px-8 container" v-if="totalPages !==1">
     <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
       <div class="flex flex-1 justify-between sm:hidden">
         <a href="#" @click="currentPage !== 1 ? currentPage-- : currentPage" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
         <a href="#" @click="currentPage !== totalPages  ? currentPage++ : currentPage" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</a>
       </div>
       <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
-        <div>
-          <p class="text-sm text-gray-700">
-            Showing
-            <span class="font-medium">{{currentPage}}</span>
-            to
-            <span class="font-medium">{{ currentPage +  limit - 1 }}</span>
-            of
-            <span class="font-medium">{{ totalNews }}</span>
-            results
-          </p>
-        </div>
         <div>
           <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
             <span  class="hover:cursor-pointer relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
@@ -42,7 +31,10 @@
               </svg>
             </span>
             <!-- Current: "z-10 bg-indigo-50 border-indigo-500 text-indigo-600", Default: "bg-white border-gray-300 text-gray-500 hover:bg-gray-50" -->
-            <span v-for="item in totalPages" @click="currentPage = item" aria-current="page" class="hover:cursor-pointer relative z-10 inline-flex items-center border border-indigo-500  px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20" :class="{'bg-indigo-50' : item === currentPage}">{{item}}</span>
+            <span v-if="totalPages <= 10" v-for="item in totalPages" @click="currentPage = item" aria-current="page" class="hover:cursor-pointer relative z-10 inline-flex items-center border border-indigo-500  px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20" :class="{'bg-indigo-50' : item === currentPage}">{{item}}</span>
+            <span v-else v-for="item in 3" @click="currentPage = item" aria-current="page" class="hover:cursor-pointer relative z-10 inline-flex items-center border border-indigo-500  px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20" :class="{'bg-indigo-50' : item === currentPage}">{{item}}</span>
+            <span  @click="currentPage = 4" v-if="totalPages >= 610" aria-current="page" class="hover:cursor-pointer relative z-10 inline-flex items-center border border-indigo-500  px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20">...</span>
+            <span v-if="totalPages > 10" v-for="item in (totalPages - 3, totalPages)" @click="currentPage = item" aria-current="page" class="hover:cursor-pointer relative z-10 inline-flex items-center border border-indigo-500  px-4 py-2 text-sm font-medium text-indigo-600 focus:z-20" :class="{'bg-indigo-50' : item === currentPage}">{{item}}</span>
             <span class="cursor-pointer relative inline items-center border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
               <span class="sr-only">Next</span>
               <!-- Heroicon name: mini/chevron-right -->
@@ -65,7 +57,7 @@ export default {
   data(){
     return {
       news : [],
-      currentPage : 1,
+      currentPage : 0,
       totalPages : null,
       limit : 4,
       totalNews : JSON.parse(localStorage.getItem('news')).length
@@ -81,13 +73,14 @@ export default {
         }
       }) .then(res => {
         this.news = res.data.results
+        console.log(res.data.results)
         this.totalPages = Math.ceil( this.totalNews / this.limit)
       })
     }
   },
 
   mounted(){
-    this.getNews(1)
+    this.getNews(0)
   },
 
   watch : {

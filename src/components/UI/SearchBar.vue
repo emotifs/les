@@ -14,6 +14,7 @@
 
 <script>
 import axios from "axios";
+import {mapGetters} from "vuex";
 
 export default {
   name: "SearchBar",
@@ -29,18 +30,34 @@ export default {
   methods : {
     input() {
       if(this.route==='all-lessons'){
-        axios.get(`lessons/?search=${this.search}`)
+        axios.get(`lessons/?search=${this.search}`,
+            {
+              params : {
+                limit : this.pagination.limit,
+                offset : this.pagination.offset
+              }
+            })
             .then(res => {
               this.$store.commit('setAllLessons', res.data.results)
             })
       }
       else {
-        axios.get(`lessons/?search=${this.search}&type__slug=${this.route}`)
+        axios.get(`lessons/?search=${this.search}&type__slug=${this.route}`,{
+          params : {
+            limit : this.pagination.limit,
+            offset : this.pagination.offset
+          }}
+        )
             .then(res => {
               this.$store.commit('setAllLessons', res.data.results)
             })
       }
     }
+  },
+  computed: {
+    ...mapGetters({
+      pagination: 'getAllPagination'
+    })
   },
 
   watch:{
