@@ -1,5 +1,4 @@
 <template>
-  as
   <div class="face">
     <div class="band">
       <div class="red"></div>
@@ -12,7 +11,7 @@
   </div>
 
   <h1>Oops! Something went wrong!</h1>
-  <div class="btn">Return to Home</div>
+  <router-link to="/" class="btn">Return to Home</router-link>
 </template>
 
 <script>
@@ -25,10 +24,10 @@ export default {
 $gb: #F2EEE8;
 $wh: #FFFFFF;
 $dark: #383A41;
-$red: #5E7FDC;
-$blue: #EB6D6D;
+$red: #EB6D6D;
+$blue: #5E7FDC;
 
-$break: 400px;
+$break: 100px;
 
 html, body {
   margin: 0;
@@ -36,7 +35,6 @@ html, body {
   width: 100%;
   min-height: 100vh;
   background-color: $gb;
-  font-family: 'Open Sans';
 }
 
 *, *:before, *:after {
@@ -188,7 +186,6 @@ h1 {
 }
 
 .btn {
-  font-family: "Open Sans";
   font-weight: 400;
   padding: 20px;
   background-color: rgba($blue,1.0);
@@ -199,7 +196,7 @@ h1 {
   font-size: 1.2em;
   border-radius: 5px;
   cursor: pointer;
-  margin-top: 80px;
+  margin-top: 40px;
   margin-bottom: 50px;
   transition: all .2s linear;
 
@@ -214,5 +211,9 @@ h1 {
    background-color: rgba($blue,0.8);
    transition: all .2s linear;
  }
+}
+a{
+  color: #fff!important;
+  display: block;
 }
 </style>

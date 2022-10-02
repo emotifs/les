@@ -58,10 +58,12 @@ export default {
 
   data(){
     return{
-      route : this.$route.path.toString().substr(1)
+      route : this.$route.path.toString().substr(9)
     }
   },
-
+  mounted() {
+    console.log(this.route)
+  },
   computed: {
     ...mapGetters({
       lessons: 'all_lessons'

@@ -21,7 +21,7 @@ export default {
   data(){
     return{
         search : '',
-        route : this.$route.path.toString().substr(1)
+        route : this.$route.path.toString().substr(9)
     }
   },
   mounted() {

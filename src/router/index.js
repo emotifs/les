@@ -15,12 +15,12 @@ const routes = [
   },
   {
     name : 'lessons',
-    path : '/:slug',
+    path : '/lessons/:slug',
     component: LessonView
   },
   {
     name : 'lesson',
-    path : '/:slug/:lesson',
+    path : '/lessons/:slug/:lesson',
     component: LessonDetail
   },
   {

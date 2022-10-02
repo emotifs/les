@@ -36,7 +36,7 @@ export default {
     let cnt = 0
     for(let i = 0; i < def.length; i++){
       if(def[i] === '/') cnt++;
-      if(cnt === 2) {
+      if(cnt === 3) {
         route += def[[i]]
       }
     }
