@@ -4,6 +4,7 @@ export default {
     state: {
         name: '',
         bio: '',
+        email : ''
     },
     getters: {
         name(state) {
@@ -11,14 +12,19 @@ export default {
         },
         bio(state) {
             return state.bio
+        },
+        email(state){
+            return state.email
         }
     },
     mutations: {
         setUser(state, payload) {
             state.name = payload.name
             state.bio = payload.bio
+            state.email = payload.email
             localStorage.setItem('name', payload.name)
             localStorage.setItem('bio', payload.bio)
+            localStorage.setItem('email', payload.email)
         }
     },
     actions: {
@@ -29,7 +35,8 @@ export default {
                 context.rootState.isLoading = false
                 context.commit('setUser', {
                     name: res.data.full_name,
-                    bio: res.data.bio
+                    bio: res.data.bio,
+                    email : res.data.email
                 })
             })
 

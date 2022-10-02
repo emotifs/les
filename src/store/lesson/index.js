@@ -5,8 +5,12 @@ export default {
         lessons: [],
         all_lessons: [],
         limit : 3,
-        offset : 0
+        offset : 0,
+        number : 0,
     }, getters: {
+        limit(state){
+            return state.limit
+        },
         lessons(state) {
             return state.lessons
         },
@@ -16,10 +20,19 @@ export default {
         },
 
         getAllPagination(state){
-            return {
-                limit : state.limit,
-                offset : state.offset
-            }
+            if(state.offset !== 0)
+                return {
+                    limit : state.limit,
+                    offset : state.offset  + state.limit
+                }
+            else
+                return {
+                    limit : state.limit,
+                    offset : state.offset
+                }
+        },
+        getAllNumber(state){
+            return state.number
         }
 
     }, mutations: {
@@ -32,8 +45,10 @@ export default {
             localStorage.setItem("all_lessons", JSON.stringify(payload))
         },
         setAllPagination(state, payload){
-            state.limit = payload.limit
             state.offset = payload.offset
+        },
+        setAllNumber(state, payload){
+            state.number = payload
         }
     }, actions: {
         getLessons(context) {
@@ -43,6 +58,12 @@ export default {
                     const lesson = res.data.results
                     context.rootState.isLoading = false
                     context.commit('setLessons', lesson)
+                })
+
+            axios.get('lessons/')
+                .then(res => {
+                    context.rootState.isLoading = false
+                        context.commit('setAllNumber', res.data.results.length)
                 })
         },
     }, modules: {}

@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 ">
-    <div class="w-full  relative bg-white rounded-lg border border-gray-200 shadow-md mx-5" v-for="item in news">
+    <div class="w-full  relative bg-white rounded-lg border border-gray-200 shadow-md mx-0 lg:mx-5" v-for="item in news">
         <router-link :to="'news/' + item.slug">
           <img class="rounded-t-lg w-full" :src="item.thumbnail" alt="" />
           <div class="p-5">
@@ -14,7 +14,7 @@
         </router-link>
     </div>
   </div>
-  <div class="mx-auto px-8 container" v-if="totalPages !==1">
+  <div class="mx-auto px-1 flex justify-center my-5" v-if="totalPages !==1">
     <div class="flex items-center justify-between border-t border-gray-200 bg-white px-4 py-3 sm:px-6">
       <div class="flex flex-1 justify-between sm:hidden">
         <a href="#" @click="currentPage !== 0 ? currentPage-- : currentPage" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</a>
@@ -91,7 +91,8 @@ export default {
       else
         this.getNews(this.currentPage + this.limit - 1)
     },
-  }
+  },
+
 }
 </script>
 

@@ -26,7 +26,7 @@
               <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Email</h2>
               <ul class="text-gray-600">
                 <li class="mb-4">
-                  <a href="mailto:info@mrulugbek.uz">info@mrulugbek.uz</a>
+                  <a href="mailto:info@mrulugbek.uz">{{ email }}</a>
                 </li>
               </ul>
             </div>
@@ -52,12 +52,16 @@ export default {
   name: "TheFooter",
   data(){
     return{
-      social : []
+      social : [],
+      email : ''
     }
   },
+  
 
   mounted(){
     this.social = JSON.parse(localStorage.getItem('social'))
+    this.email = this.$store.getters.email
+    console.log(this.email)
   }
 }
 </script>

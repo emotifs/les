@@ -26,6 +26,7 @@ export default {
   },
   mounted() {
     this.input()
+    console.log(this.pagination)
   },
   methods : {
     input() {
@@ -38,6 +39,8 @@ export default {
               }
             })
             .then(res => {
+              console.log(this.pagination)
+              this.$store.commit('setAllNumber', res.data.total_count)
               this.$store.commit('setAllLessons', res.data.results)
             })
       }
@@ -50,6 +53,7 @@ export default {
         )
             .then(res => {
               this.$store.commit('setAllLessons', res.data.results)
+              this.$store.commit('setAllNumber', res.data.results.length)
             })
       }
     }

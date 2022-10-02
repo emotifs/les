@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-10">
+  <div class="container mx-auto px-0 lg:px-10 pb-8 border-b-2">
     <div v-for="it in lesson" >
       <div class="wid-max pb-6">
         <h1 class="font-bold text-2xl lg:text-4xl my-2">{{it.title}}</h1>
@@ -56,5 +56,11 @@ export default {
   .wid-max{
     width: 60%!important;
     margin: 0 auto;
+  }
+
+  @media(max-width: 767px){
+    .wid-max{
+      width: 80%!important;
+    }
   }
 </style>

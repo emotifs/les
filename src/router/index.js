@@ -5,6 +5,7 @@ import LessonDetail from "@/views/LessonDetail";
 import AllLessons from "@/views/AllLessons";
 import News from '@/views/News'
 import NewsDetail from "@/views/NewsDetail";
+import NotFound from "@/views/NotFound";
 
 const routes = [
   {
@@ -37,6 +38,11 @@ const routes = [
     path : '/news/:slug',
     component:  NewsDetail
   },
+  {
+    path : '/:notFound(.*)',
+    name : 'notFound',
+    component: NotFound
+  }
 ]
 
 const router = createRouter({
