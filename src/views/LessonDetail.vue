@@ -2,15 +2,15 @@
   <div class="container mx-auto px-0 lg:px-10 pb-8 border-b-2">
     <div v-for="it in lesson" >
       <div class="wid-max pb-6">
-        <h1 class="font-bold text-2xl lg:text-4xl my-2">{{it.title}}</h1>
-        <p>{{it.level}}  <time>{{ new Date(it.created_at).toLocaleString("en-us", { dateStyle: "medium" }) }}</time></p>
+        <h1 class="font-bold text-xl lg:text-4xl my-2">{{it.title}}</h1>
+        <p class="text-sm lg:text-lg">{{it.level}}  <time>{{ new Date(it.created_at).toLocaleString("en-us", { dateStyle: "medium" }) }}</time></p>
       </div>
       <div class="wid-max pb-8">
         <img class="w-full" :src="it.thumbnail" alt="">
       </div>
-      <div class="wid-max"  v-html="it.content"></div>
+      <div class="wid-max text-sm lg:text-lg"  v-html="it.content"></div>
       <div class="wid-max" v-if="it.files.length">
-        <h1 class="font-bold text-2xl my-5">Attached files : </h1>
+        <h1 class="font-bold text-xl lg:text-2xl my-5">Attached files : </h1>
         <a :href="'http://' + link.url" target="_blank" v-for="link in it.files">
           <div>
             <i class="fa-regular fa-file"></i> {{link.name}}

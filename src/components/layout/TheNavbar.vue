@@ -43,14 +43,6 @@
                 </li>
               </ul>
             </li>
-            <div v-else>
-              <li class="nav-item">
-                <router-link :to="type.slug"
-                             class="px-3 py-2 flex items-center  uppercase leading-snug font-semibold black hover:text-indigo-400 hover:cursor-pointer mx-3">
-                  <span class="ml-2">{{type.title}}</span>
-                </router-link>
-              </li>
-            </div>
           </div>
         </ul>
       </div>

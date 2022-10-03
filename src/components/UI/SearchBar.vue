@@ -1,5 +1,5 @@
 <template>
-    <div class="flex mx-auto w-full lg:w-1/4">
+    <div class="flex mx-auto w-full lg:w-1/4 px-4">
       <label for="search-dropdown" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-gray-300">Your Email</label>
       <div class="relative w-full">
         <input type="search" v-model="search"  id="search-dropdown" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-gray-50 rounded-r-lg border border-gray-300 focus:outline-none focus:border-blue-500" placeholder="Search" required="">
@@ -26,49 +26,30 @@ export default {
   },
   mounted() {
     this.input()
-    console.log(this.pagination)
   },
   methods : {
     input() {
       if(this.route==='all-lessons'){
-        axios.get(`lessons/?search=${this.search}`,
-            {
-              params : {
-                limit : this.pagination.limit,
-                offset : this.pagination.offset
-              }
-            })
+        axios.get(`lessons/?search=${this.search}`)
             .then(res => {
-              console.log(this.pagination)
-              this.$store.commit('setAllNumber', res.data.total_count)
               this.$store.commit('setAllLessons', res.data.results)
             })
       }
       else {
-        axios.get(`lessons/?search=${this.search}&type__slug=${this.route}`,{
-          params : {
-            limit : this.pagination.limit,
-            offset : this.pagination.offset
-          }}
+        axios.get(`lessons/?search=${this.search}&type__slug=${this.route}`
         )
             .then(res => {
               this.$store.commit('setAllLessons', res.data.results)
-              this.$store.commit('setAllNumber', res.data.results.length)
             })
       }
     }
   },
-  computed: {
-    ...mapGetters({
-      pagination: 'getAllPagination'
-    })
-  },
 
   watch:{
     $route (to, from){
-      this.route = to.path.toString().substr(1)
+      this.route = to.path.toString().substr(9)
       this.search = ''
-      this.route = to.path.toString().substr(1)
+      this.route = to.path.toString().substr(9)
       let lessons = JSON.parse(localStorage.getItem('lessons'))
       lessons = lessons.filter(it => it.type.slug === this.route)
       this.$store.commit('setAllLessons', lessons)

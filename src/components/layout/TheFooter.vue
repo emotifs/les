@@ -9,8 +9,8 @@
           </div>
           <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
             <div>
-              <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Resources</h2>
-              <ul class="text-gray-600">
+              <h2 class="mb-6 text-xs lg:text-sm font-semibold text-gray-900 uppercase">Resources</h2>
+              <ul class="text-gray-600  text-xs lg:text-sm">
                 <li class="mb-4">
                   <router-link to="/">Home</router-link>
                 </li>
@@ -23,10 +23,10 @@
               </ul>
             </div>
             <div>
-              <h2 class="mb-6 text-sm font-semibold text-gray-900 uppercase">Email</h2>
+              <h2 class="mb-6  text-xs lg:text-sm font-semibold text-gray-900 uppercase">Email</h2>
               <ul class="text-gray-600">
                 <li class="mb-4">
-                  <a href="mailto:info@mrulugbek.uz">{{ email }}</a>
+                  <a href="mailto:info@mrulugbek.uz" class="text-xs">{{ email }}</a>
                 </li>
               </ul>
             </div>
@@ -34,7 +34,7 @@
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto lg:my-8">
         <div class="sm:flex sm:items-center sm:justify-between">
-        <span class="text-sm text-gray-500 sm:text-center ">© 2022 English Lessons. All Rights Reserved.
+        <span class=" text-xs lg:text-sm text-gray-500 sm:text-center ">© 2022 English Lessons. All Rights Reserved.
         </span>
           <div class="flex mt-4 space-x-6 sm:justify-center sm:mt-0">
             <a :href="soc.url" class="text-gray-500 hover:text-gray-900" v-for="soc in social" :key="soc.id" target="_blank">

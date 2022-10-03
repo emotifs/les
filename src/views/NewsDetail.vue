@@ -1,14 +1,14 @@
 <template>
-  <div class="container mx-auto px-10 pb-8 border-b-2" >
+  <div class="container mx-auto px-5 lg:px-10 pb-8 border-b-2" >
     <div v-for="it in news" >
       <div class="wid-max pb-6">
-        <h1 class="font-bold text-2xl lg:text-4xl my-2">{{it.title}}</h1>
-        <p>{{it.level}}  <time>{{ new Date(it.created_at).toLocaleString("en-us", { dateStyle: "medium" }) }}</time></p>
+        <h1 class="font-bold text-xl lg:text-4xl my-2">{{it.title}}</h1>
+        <p class="text-sm lg:text-lg">{{it.level}}  <time>{{ new Date(it.created_at).toLocaleString("en-us", { dateStyle: "medium" }) }}</time></p>
       </div>
       <div class="wid-max pb-8">
         <img class="w-full" :src="it.thumbnail" alt="">
       </div>
-      <div class="wid-max"  v-html="it.content"></div>
+      <div class="wid-max text-sm lg:text-lg"  v-html="it.content"></div>
     </div>
   </div>
 </template>

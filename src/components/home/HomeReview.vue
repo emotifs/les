@@ -27,6 +27,7 @@
       <pagination />
     </template>
   </carousel>
+  <div class="my-5"></div>
 </template>
 
 <script>

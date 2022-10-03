@@ -1,5 +1,5 @@
 <template>
-  <div class="container px-8 mx-auto">
+  <div class="container px-6 lg:px-10 mx-auto">
     <SearchBar class="w-full block my-4 lg:hidden md:hidden "/>
     <div class="flex">
       <main class="w-full lg:w-3/4">
@@ -71,7 +71,8 @@ export default {
   },
   watch:{
     $route (to, from){
-
+      this.route = to.path.toString().substr(9)
+      console.log(this.route)
     },
   }
 }
