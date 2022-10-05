@@ -25,7 +25,7 @@ const routes = [
   },
   {
     name: 'all-lessons',
-    path: '/all-lessons',
+    path: '/lessons/all-lessons',
     component: AllLessons
   },
   {

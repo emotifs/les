@@ -10,7 +10,7 @@
     <div class="mouth"></div>
   </div>
 
-  <h1>Oops! Something went wrong!</h1>
+  <h1>Sorry, no content yet!</h1>
   <router-link to="/" class="btn">Return to Home</router-link>
 </template>
 
@@ -175,7 +175,7 @@ h1 {
   font-weight: 800;
   color: $dark;
   text-align: center;
-  font-size: 2.5em;
+  font-size: 2em;
   padding-top: 20px;
 
 @media screen and (max-width: $break) {
@@ -187,15 +187,15 @@ h1 {
 
 .btn {
   font-weight: 400;
-  padding: 20px;
+  padding: 10px 20px;
   background-color: rgba($blue,1.0);
   color: white;
-  width: 320px;
   margin: 0 auto;
   text-align: center;
   font-size: 1.2em;
   border-radius: 5px;
   cursor: pointer;
+  width: 200px;
   margin-top: 40px;
   margin-bottom: 50px;
   transition: all .2s linear;

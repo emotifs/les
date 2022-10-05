@@ -1,8 +1,8 @@
 <template>
-  <div class="container mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 ">
+  <div class="container mx-auto px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
     <div class="w-full  relative bg-white rounded-lg border border-gray-200 shadow-md mx-0 lg:mx-5" v-for="item in news">
         <router-link :to="'news/' + item.slug">
-          <img class="rounded-t-lg w-full" :src="item.thumbnail" alt="" />
+          <img class="rounded-t-lg w-full" :src="item.thumbnail" style="height : 300px; object-fit: cover;" alt=""/>
           <div class="p-5">
               <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">{{item.title}}</h5>
             <p class="mb-14 font-normal text-gray-700 mb-14">{{item.description.toString().substring(0, 50) + '...'}}</p>
@@ -59,7 +59,7 @@ export default {
       news : [],
       currentPage : 0,
       totalPages : null,
-      limit : 4,
+      limit : 12,
       totalNews : JSON.parse(localStorage.getItem('news')).length
     }
   },

@@ -1,5 +1,5 @@
 <template>
-  <div class="container px-6 lg:px-10 mx-auto">
+  <div class="container px-6 lg:px-10 mx-auto" v-if="this.number">
     <SearchBar class="w-full block my-4 lg:hidden md:hidden "/>
     <div class="flex">
       <main class="w-full lg:w-3/4">
@@ -44,15 +44,20 @@
       <SearchBar class="w-1/4 hidden lg:block"/>
     </div>
   </div>
+  <div v-else>
+    <NotFound />
+  </div>
 </template>
 
 <script>
 import axios from "axios";
 import SearchBar from "@/components/UI/SearchBar";
 import {mapGetters} from "vuex";
+import NotFound from "@/views/NotFound";
 export default {
   name: "LessonView",
   components: {
+    NotFound,
     SearchBar
   },
 
@@ -66,7 +71,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      lessons: 'all_lessons'
+      lessons: 'all_lessons',
+      number : "number"
     })
   },
   watch:{
