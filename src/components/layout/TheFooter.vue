@@ -18,7 +18,7 @@
                   <router-link to="/lessons/all-lessons">Lessons</router-link>
                 </li>
                 <li>
-                  <router-link to="/news  ">News</router-link>
+                  <router-link to="/news">News</router-link>
                 </li>
               </ul>
             </div>
@@ -26,7 +26,7 @@
               <h2 class="mb-6  text-xs lg:text-sm font-semibold text-gray-900 uppercase">Email</h2>
               <ul class="text-gray-600">
                 <li class="mb-4">
-                  <a href="mailto:info@mrulugbek.uz" class="text-xs">{{ email }}</a>
+                  <a href="mailto:info@mrulugbek.uz" class="text-[10px]">{{ email }}</a>
                 </li>
               </ul>
             </div>

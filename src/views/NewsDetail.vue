@@ -8,7 +8,7 @@
       <div class="wid-max pb-8">
         <img class="w-full" :src="it.thumbnail" alt="">
       </div>
-      <div class="wid-max text-sm lg:text-lg"  v-html="it.content"></div>
+      <div class="wid-max text-sm lg:text-lg break-words"  v-html="it.content"></div>
     </div>
   </div>
 </template>
