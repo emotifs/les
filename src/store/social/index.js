@@ -1,4 +1,4 @@
-import axios from "axios";
+import $axios from "@/plugins/axios";
 
 export default {
     state: {
@@ -15,7 +15,7 @@ export default {
         }, actions: {
             getSocial(context) {
                 context.rootState.isLoading = true
-                axios.get('social-accounts/')
+                $axios.get('social-accounts/')
                     .then(res => {
                         const social = res.data.results
                         console.log(social)

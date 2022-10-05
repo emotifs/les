@@ -1,4 +1,4 @@
-import axios from "axios";
+import $axios from "@/plugins/axios";
 
 export default {
     state: {
@@ -15,7 +15,7 @@ export default {
         }, actions: {
             getReview(context) {
                 context.rootState.isLoading = true
-                axios.get('reviews/')
+                $axios.get('reviews/')
                     .then(res => {
                         const review = res.data.results
                         console.log(review)

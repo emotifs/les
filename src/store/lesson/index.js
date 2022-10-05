@@ -1,4 +1,4 @@
-import axios from "axios";
+import $axios from "@/plugins/axios";
 
 export default {
     state: {
@@ -32,7 +32,7 @@ export default {
     }, actions: {
         getLessons(context) {
             context.rootState.isLoading = true
-            axios.get('lessons/')
+            $axios.get('lessons/')
                 .then(res => {
                     context.commit('setNumber', res.data.count)
                     const lesson = res.data.results

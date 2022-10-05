@@ -1,4 +1,4 @@
-import axios from "axios";
+import $axios from "@/plugins/axios";
 
 export default {
     state: {
@@ -15,7 +15,7 @@ export default {
         }, actions: {
             getNews(context) {
                 context.rootState.isLoading = true
-                axios.get('posts/')
+                $axios.get('posts/')
                     .then(res => {
                         const news = res.data.results
                         localStorage.setItem('full_news', JSON.stringify(res.data))

@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import $axios from "@/plugins/axios";
 
 export default {
   name: "HomeNewspaper",
@@ -25,7 +25,7 @@ export default {
 
   methods : {
     subscribeData(){
-      axios.post('subscribe/', {
+      $axios.post('subscribe/', {
         email : this.email
       })
           .then(res => {

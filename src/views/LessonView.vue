@@ -50,7 +50,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import $axios from "@/plugins/axios";
 import SearchBar from "@/components/UI/SearchBar";
 import {mapGetters} from "vuex";
 import NotFound from "@/views/NotFound";

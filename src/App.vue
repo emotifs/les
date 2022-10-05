@@ -13,7 +13,7 @@
 import TheNavbar from "@/components/layout/TheNavbar";
 import TheLoader from "@/components/UI/TheLoader";
 import TheFooter from "@/components/layout/TheFooter";
-import axios from "axios";
+import $axios from "@/plugins/axios";
 
 export default {
   components: {
@@ -22,6 +22,7 @@ export default {
     TheNavbar
   },
   mounted() {
+    console.log('env', process.env)
     this.$store.dispatch('getUser')
     this.$store.dispatch('getReview')
     this.$store.dispatch('getSocial')

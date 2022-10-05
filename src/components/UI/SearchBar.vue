@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import $axios from "@/plugins/axios";
 import {mapGetters} from "vuex";
 
 export default {
@@ -30,13 +30,13 @@ export default {
   methods : {
     input() {
       if(this.route==='all-lessons'){
-        axios.get(`lessons/?search=${this.search}`)
+        $axios.get(`lessons/?search=${this.search}`)
             .then(res => {
               this.$store.commit('setAllLessons', res.data.results)
             })
       }
       else {
-        axios.get(`lessons/?search=${this.search}&type__slug=${this.route}`
+        $axios.get(`lessons/?search=${this.search}&type__slug=${this.route}`
         )
             .then(res => {
               this.$store.commit('setAllLessons', res.data.results)

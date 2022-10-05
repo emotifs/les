@@ -50,7 +50,7 @@
 <script>
 import SearchBar from "@/components/UI/SearchBar";
 import {mapGetters} from "vuex";
-import axios from "axios";
+import $axios from "@/plugins/axios";
 
 export default {
   name: "LessonView",

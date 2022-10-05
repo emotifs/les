@@ -1,5 +1,4 @@
-import axios from "axios";
-
+import $axios from "@/plugins/axios";
 export default {
     state: {
         name: '',
@@ -30,7 +29,7 @@ export default {
     actions: {
         getUser(context) {
             context.rootState.isLoading = true
-            let response = axios.get('home/')
+            let response = $axios.get('home/')
             response.then(res => {
                 context.rootState.isLoading = false
                 context.commit('setUser', {

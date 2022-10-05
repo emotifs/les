@@ -1,4 +1,4 @@
-import axios from "axios";
+import $axios from "@/plugins/axios";
 
 export default {
     state: {
@@ -15,7 +15,7 @@ export default {
         }, actions: {
             getTypes(context) {
                 context.rootState.isLoading = true
-                axios.get('types/')
+                $axios.get('types/')
                     .then(res => {
                         const type = res.data.results
                         console.log(type)

@@ -38,7 +38,7 @@
 
 <script>
 import Paginate from 'vuejs-paginate-next';
-import axios from "axios";
+import $axios from "@/plugins/axios";
 
 export default {
   name: "News",
@@ -58,7 +58,7 @@ export default {
 
   methods: {
     getNews(offset) {
-      axios.get('posts/', {
+      $axios.get('posts/', {
         params: {
           limit: this.limit,
           offset,
