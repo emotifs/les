@@ -3,6 +3,7 @@ import $axios from "@/plugins/axios";
 export default {
     state: {
         lessons: [],
+        lessonDetail: {},
         all_lessons: [],
         number : 0
     }, getters: {
@@ -13,6 +14,9 @@ export default {
         all_lessons(state) {
             return state.all_lessons
         },
+        lessonDetail(state) {
+            return state.lessonDetail
+        },
         number(state){
             return state.number
         }
@@ -22,7 +26,13 @@ export default {
             state.number = payload
         },
         setLessons(state, payload) {
+
             state.lessons = payload
+        },
+        setLessonDetail(state, payload) {
+            console.log(payload,'response')
+
+            state.lessonDetail = payload
         },
         setAllLessons(state, payload){
             state.all_lessons = payload
@@ -36,6 +46,13 @@ export default {
                     const lesson = res.data.results
                     context.rootState.isLoading = false
                     context.commit('setLessons', lesson)
+                })
+        },
+        getLessonDetail(context, slug) {
+            $axios.get(`lessons/${slug}/`)
+                .then(res => {
+                    context.commit('setLessonDetail', res.data)
+                    context.rootState.isLoading = false
                 })
         },
     }, modules: {}

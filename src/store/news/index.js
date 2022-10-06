@@ -17,7 +17,6 @@ export default {
                 $axios.get('posts/')
                     .then(res => {
                         const news = res.data.results
-                        localStorage.setItem('full_news', JSON.stringify(res.data))
                         context.rootState.isLoading = false
                         context.commit('setNews', news)
                     })
