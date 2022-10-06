@@ -11,7 +11,7 @@
       <div class="wid-max text-sm lg:text-lg"  v-html="it.content"></div>
       <div class="wid-max" v-if="it.files.length">
         <h1 class="font-bold text-xl lg:text-2xl my-5">Attached files : </h1>
-        <a :href="'http://' + link.url" target="_blank" v-for="link in it.files">
+        <a :href="'https://' + link.url" target="_blank" v-for="link in it.files">
           <div>
             <i class="fa-regular fa-file"></i> {{link.name}}
           </div>
@@ -42,7 +42,8 @@ export default {
     }
     route = route.substr(1)
     console.log(route)
-    let lessons = JSON.parse(localStorage.getItem('lessons'))
+    let lessons = this.$store.getters.all_lessons
+    console.log('ans1' + lessons)
     lessons = lessons.filter(lesson =>
       lesson.slug.toString() === route
     )

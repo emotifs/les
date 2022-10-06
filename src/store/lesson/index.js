@@ -23,11 +23,9 @@ export default {
         },
         setLessons(state, payload) {
             state.lessons = payload
-            localStorage.setItem("lessons", JSON.stringify(payload))
         },
         setAllLessons(state, payload){
             state.all_lessons = payload
-            localStorage.setItem("all_lessons", JSON.stringify(payload))
         },
     }, actions: {
         getLessons(context) {

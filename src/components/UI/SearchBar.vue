@@ -50,9 +50,10 @@ export default {
       this.route = to.path.toString().substr(9)
       this.search = ''
       this.route = to.path.toString().substr(9)
-      let lessons = JSON.parse(localStorage.getItem('lessons'))
+      let lessons = this.$store.getters.lessons
       lessons = lessons.filter(it => it.type.slug === this.route)
       this.$store.commit('setAllLessons', lessons)
+      console.log('les', lessons)
     },
     search(val){
         this.input()

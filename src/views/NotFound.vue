@@ -10,7 +10,7 @@
     <div class="mouth"></div>
   </div>
 
-  <h1>Sorry, no content yet!</h1>
+  <h1>404 Not Found</h1>
   <router-link to="/" class="btn">Return to Home</router-link>
 </template>
 

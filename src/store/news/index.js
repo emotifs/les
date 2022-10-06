@@ -10,7 +10,6 @@ export default {
     }, mutations: {
             setNews(state, payload) {
                 state.news = payload
-                localStorage.setItem("news", JSON.stringify(payload))
             }
         }, actions: {
             getNews(context) {
