@@ -1,11 +1,11 @@
 <template>
   <div v-if="this.$store.getters.isLoading" class="container mx-auto px-10">
-    <TheLoader />
+    <TheLoader/>
   </div>
   <section v-else>
     <TheNavbar/>
     <router-view/>
-    <TheFooter />
+    <TheFooter/>
   </section>
 </template>
 
@@ -16,6 +16,16 @@ import TheFooter from "@/components/layout/TheFooter";
 import $axios from "@/plugins/axios";
 
 export default {
+  metaInfo: {
+    // if no subcomponents specify a metaInfo.title, this title will be used
+    title: 'English Lessons',
+    // all titles will be injected into this template
+    titleTemplate: '%s | English Lessons',
+    htmlAttrs: {
+      lang: 'en',
+      amp: true
+    }
+  },
   components: {
     TheFooter,
     TheLoader,

@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {createRouter, createWebHistory} from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import LessonView from "@/views/LessonView";
 import LessonDetail from "@/views/LessonDetail";
@@ -8,46 +8,47 @@ import NewsDetail from "@/views/NewsDetail";
 import NotFound from "@/views/NotFound";
 
 const routes = [
-  {
-    path: '/',
-    name: 'home',
-    component: HomeView
-  },
-  {
-    name : 'lessons',
-    path : '/lessons/:slug',
-    component: LessonView
-  },
-  {
-    name : 'lesson',
-    path : '/lessons/:slug/:lesson',
-    component: LessonDetail
-  },
-  {
-    name: 'all-lessons',
-    path: '/lessons/all-lessons',
-    component: AllLessons
-  },
-  {
-    name : 'news',
-    path : '/news',
-    component: News
-  },
-  {
-    name : 'NewsDetail',
-    path : '/news/:slug',
-    component:  NewsDetail
-  },
-  {
-    path : '/:notFound(.*)',
-    name : 'notFound',
-    component: NotFound
-  }
+    {
+        path: '/',
+        name: 'home',
+        component: HomeView,
+
+    },
+    {
+        name: 'lessons',
+        path: '/lessons/:slug',
+        component: LessonView
+    },
+    {
+        name: 'lesson',
+        path: '/lessons/:slug/:lesson',
+        component: LessonDetail
+    },
+    {
+        name: 'all-lessons',
+        path: '/lessons/all-lessons',
+        component: AllLessons
+    },
+    {
+        name: 'news',
+        path: '/news',
+        component: News
+    },
+    {
+        name: 'NewsDetail',
+        path: '/news/:slug',
+        component: NewsDetail
+    },
+    {
+        path: '/:notFound(.*)',
+        name: 'notFound',
+        component: NotFound
+    }
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
-  routes
+    history: createWebHistory(),
+    routes
 })
 
 export default router
