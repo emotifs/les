@@ -66,7 +66,8 @@ export default {
       }).then(res => {
         this.news = res.data.results
         console.log(res.data.results)
-        this.totalPages = Math.ceil(this.totalNews / this.limit)
+        this.totalPages = Math.ceil(this.news.length / this.limit)
+        console.log(this.totalPages, this.totalNews, this.news)
       })
     }
   },
@@ -116,12 +117,16 @@ export default {
 
 .pagination li {
   float: left;
-  padding: 8px 16px;
+  padding: 8px 3px;
   text-decoration: none;
-  border: 1px solid #ddd;
+  /*border: 1px solid #ddd;*/
   color: white;
   background-color: white;
   font-size: 1em;
+}
+
+.pagination li:hover{
+  cursor: pointer;
 }
 
 .pagination li:hover:not(.active) {
@@ -132,16 +137,15 @@ export default {
 @media screen and (max-width: 800px) {
   .pagination li {
     float: left;
-    padding: 3px 11px;
+    padding: 3px 3px;
     text-decoration: none;
-    border: 1px solid #ddd;
     color: white;
     background-color: white;
     font-size: 1em;
   }
   .pagination a {
     float: left;
-    padding: 3px 11px;
+    padding: 3px 12px;
     text-decoration: none;
     border: 1px solid #ddd;
     background-color: white;
