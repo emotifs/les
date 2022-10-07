@@ -1,45 +1,36 @@
 <template>
   <div class="container mx-auto px-5 lg:px-10 pb-8 border-b-2" >
-    <div v-for="it in news" >
+
       <div class="wid-max pb-6">
-        <h1 class="font-bold text-xl lg:text-4xl my-2">{{it.title}}</h1>
-        <p class="text-sm lg:text-lg">{{it.level}}  <time>{{ new Date(it.created_at).toLocaleString("en-us", { dateStyle: "medium" }) }}</time></p>
+        <h1 class="font-bold text-xl lg:text-4xl my-2">{{news.title}}</h1>
+        <p class="text-sm lg:text-lg">{{news.level}}  <time>{{ new Date(news.created_at).toLocaleString("en-us", { dateStyle: "medium" }) }}</time></p>
       </div>
       <div class="wid-max pb-8">
-        <img class="w-full" :src="it.thumbnail" alt="">
+        <img class="w-full" :src="news.thumbnail" alt="">
       </div>
-      <div class="wid-max text-sm lg:text-lg break-words"  v-html="it.content"></div>
+      <div class="wid-max text-sm lg:text-lg break-words"  v-html="news.content"></div>
     </div>
-  </div>
+
 </template>
 
 <script>
+import {mapGetters, mapState} from "vuex";
+
 export default {
-  name: "NewsDetail",
-  data(){
-    return{
-      news : []
-    }
+  name: "newsDetail",
+  // data(){
+  //   return{
+  //   }
+  // },
+
+  computed: {
+    ...mapGetters({
+      news: 'newsDetail'
+    })
   },
-
-  mounted(){
-    let def = this.$route.path.toString()
-    let route = ""
-    let cnt = 0
-    for(let i = 0; i < def.length; i++){
-      if(def[i] === '/') cnt++;
-      if(cnt === 2) {
-        route += def[[i]]
-      }
-    }
-    route = route.substr(1)
-    console.log(route)
-    let news = JSON.parse(localStorage.getItem('news'))
-    news = news.filter(news =>
-      news.slug.toString() === route
-    )
-
-    this.news = news
+  mounted() {
+    console.log(this.$route.params.slug, 'touue')
+    this.$store.dispatch('getNewsDetail', this.$route.params.slug)
   }
 }
 </script>

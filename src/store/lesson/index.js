@@ -4,6 +4,7 @@ export default {
     state: {
         lessons: [],
         lessonDetail: {},
+        newsDetail: {},
         all_lessons: [],
         number : 0
     }, getters: {
@@ -16,6 +17,9 @@ export default {
         },
         lessonDetail(state) {
             return state.lessonDetail
+        },
+        newsDetail(state) {
+            return state. newsDetail
         },
         number(state){
             return state.number
@@ -33,6 +37,11 @@ export default {
             console.log(payload,'response')
 
             state.lessonDetail = payload
+        },
+        setNewsDetail(state, payload) {
+            console.log(payload,'response')
+
+            state.newsDetail = payload
         },
         setAllLessons(state, payload){
             state.all_lessons = payload
@@ -52,6 +61,13 @@ export default {
             $axios.get(`lessons/${slug}/`)
                 .then(res => {
                     context.commit('setLessonDetail', res.data)
+                    context.rootState.isLoading = false
+                })
+        },
+        getNewsDetail(context, slug) {
+            $axios.get(`posts/${slug}/`)
+                .then(res => {
+                    context.commit('setNewsDetail', res.data)
                     context.rootState.isLoading = false
                 })
         },
